@@ -1,0 +1,477 @@
+==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+
+[colors]
+background = #aa33004D
+foreground = #dad2dd
+emphasis = #c082e0
+primary = #954cba
+secondary = #44b5b1
+alert = #bd2c40
+adapta-cyan = #00BCD4
+
+[margin]
+for-modules = 1
+
+[bar/main]
+monitor = ${env:MONITOR:}
+enable-ipc = true
+width = 100%
+height = 34
+radius = 10.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+;line-size = 3
+;line-color = #f00
+
+border-size = 5
+border-color = #0000
+
+padding-left = 3
+padding-right = 3
+
+module-margin-left = 2
+module-margin-right = 2
+
+; font-N = <fontconfig pattern>;<vertical offset>
+font-0 = "Roboto:pixelsize=12:weight=bold;2"
+font-1 = FontAwesome5Free:style=Solid:size=11;2
+font-2 = FontAwesome5Free:style=Regular:size=10;4
+font-3 = FontAwesome5Brands:style=Regular:size=11;3
+font-4 = "Noto Serif:style=Regular:size=12;1"
+
+modules-left = powermenu i3 headphones
+modules-center = date spotify
+modules-right = network filesystem cpu memory volume pkg
+
+tray-position = ${env:TRAY_POSITION:right}
+tray-padding = 3
+;tray-background = #0063ff
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+;cursor-scroll = ns-resize
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+format-mounted-prefix = "  "
+label-mounted = %used% / %total%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+
+[module/i3]
+
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+enable-scroll = false
+
+wrapping-scroll = false
+
+ws-icon-0 = 1;1
+ws-icon-1 = 2;2
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4 
+ws-icon-4 = 5;5 
+ws-icon-5 = 6;6 
+ws-icon-6 = 7;7 
+ws-icon-7 = 8;8 
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-background = ${colors.emphasis}
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-foreground = ${colors.emphasis}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+;label-visible-background = ${self.label-focused-background}
+label-visible-foreground = ${self.label-focused-foreground}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song> <icon-prev> <toggle> <icon-next>
+
+icon-prev = 
+icon-play =  
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+card = intel_backlight
+enable-scroll = true	
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/pkg]
+type = custom/script
+exec = bash $HOME/.config/polybar/checkupdates.sh
+;format-background = ${colors.shade2}
+;format-underline = ${colors.adapta-cyan}
+interval = 3600
+
+[module/headphones]
+type = custom/script
+exec = echo 
+click-left = $HOME/dotfiles/scripts/switchsinks.sh
+interval = 3600
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format-prefix = " "
+;format-prefix-foreground = #009bba 
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 1
+format-prefix = "  "
+;format-prefix-foreground = #009bba 
+;format-underline = #4bffdc
+label =  %gb_used%
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%Y-%m-%d"
+date-alt = "%A, %d %B %Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix =  "  "      
+;format-prefix-foreground = #009bba 
+label = %date%   %time%
+
+[module/network]
+type = internal/network
+; Name of the network interface to display. You can get the names of the
+; interfaces on your machine with `ip link`
+; Wireless interfaces often start with `wl` and ethernet interface with `eno` or `eth`
+interface = enp35s0
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 2
+
+; Test connectivity every Nth update
+; A value of 0 disables the feature
+; NOTE: Experimental (needs more testing)
+; Default: 0
+;ping-interval = 3
+
+; Accumulate values from all interfaces
+; when querying for up/downspeed rate
+; Default: false
+accumulate-stats = true
+
+; Consider an `UNKNOWN` interface state as up.
+; Some devices like USB network adapters have 
+; an unknown state, even when they're running
+; Default: false
+unknown-as-up = true
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss> <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = %downspeed:9%  %upspeed:9% 
+;label-connected-foreground = #eefafafa
+
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = ${colors.alert}
+
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+; ramp-signal-0 = 😱
+; ramp-signal-1 = 😠
+; ramp-signal-2 = 😒
+; ramp-signal-3 = 😊
+; ramp-signal-4 = 😃
+; ramp-signal-5 = 😈
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+[module/battery]
+
+type = internal/battery
+battery = BAT0
+adapter = ADP0
+full-at = 90
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+format-full-prefix = " "
+format-full-prefix-foreground = #D2CB00
+
+ramp-capacity-0 =" "
+ramp-capacity-0-foreground = #FF0000
+ramp-capacity-1 = " "
+ramp-capacity-1-foreground = #f7ca18   
+ramp-capacity-2 = " " 
+ramp-capacity-2-foreground = #3FB837
+ramp-capacity-3 = " "
+ramp-capacity-3-foreground = #3FB837
+
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-foreground = #D2CB00
+animation-charging-framerate = 750
+
+animation-discharging-0 ="  "
+animation-discharging-1 = "  "
+animation-discharging-2 = "  "
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground}
+
+[module/powermenu]
+type = custom/text
+content = 
+;content-padding = 2
+;content-background = ${color.acolor}
+content-foreground = ${colors.foreground}
+click-left = $HOME/dotfiles/scripts/power.sh
+click-right = $HOME/dotfiles/scripts/power.sh
+
+[module/powermenu_old]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+;label-open-foreground = ${colors.secondary}
+label-close = 
+;label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = Sleep
+menu-0-0-exec = systemctl suspend
+menu-0-1 = Restart
+menu-0-1-exec = menu-open-1
+menu-0-2 = Shut down
+menu-0-2-exec = menu-open-2
+
+menu-1-0 = %{F#f80}Confirm%{F-}
+menu-1-0-exec = sudo reboot
+
+menu-2-0 = %{F#f80}Confirm%{F-}
+menu-2-0-exec = sudo poweroff
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0 ; 5
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix =""
+format-suffix = ""
+format = <label>
+exec = python /usr/share/polybar/scripts/spotify_status.py -t 42 -f '   {play_pause} {song} - {artist}  ' -p ','
+click-left = playerctl play-pause
+
+[module/playpause]
+type = custom/ipc
+; Playing
+hook-0 = echo ""
+; Paused
+hook-1 = echo ""
+initial = 1
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+[module/previous]
+type = custom/script
+interval = 86400
+format = "%{T3}<label>"
+format-padding = 5
+; Previous song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+exec-if = "pgrep spotify"
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+[module/next]
+type = custom/script
+interval = 86400
+format = "%{T3}<label>"
+format-padding = 5
+; Next song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+exec-if = "pgrep spotify"
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+
+[module/volume]
+type = internal/pulseaudio
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <label-volume> <bar-volume>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-volume =  %percentage%%
+
+label-muted = 
+label-muted-foreground = ${colors.alert}
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+bar-volume-width = 21
+bar-volume-indicator = 
+bar-volume-indicator-foreground = ${colors.emphasis}
+bar-volume-indicater-font = 5
+bar-volume-fill = –
+bar-volume-fill-font = 5  
+bar-volume-fill-foreground = ${colors.emphasis}
+bar-volume-empty = –
+bar-volume-empty-foreground = #666
+bar-volume-empty-font = 5
+format-muted-margin = ${margin.for-modules}
+format-volume-margin = ${margin.for-modules}

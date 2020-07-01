@@ -1,0 +1,70 @@
+#!/bin/sh
+set -f  # Disable globbing
+oifs=$IFS
+nl='
+'
+
+# To ignore certain sinks, set IGNORED_SINKS to a list of string that matches
+# the ignored sinks in the result of `get_data` here
+# Example: IGNORED_SINKS='hdmi'
+
+get_data() {
+	# shellcheck disable=SC1004
+	{ pactl info; pactl list sinks; } | awk '
+		/^Default Sink: /	{ default_sink=$3 }
+		/^Sink #[0-9]+$/	{ id=substr($2, 2) }
+		$1 == "Name:"		{
+						sinks[++i]=id " " $2
+						if ($2 == default_sink) print i
+					}
+		$1 == "Description:"	{
+						sinks[i]=sinks[i] ":::"\
+						substr($0, match($0, ": ") + 2)
+					}
+		END			{ for (j=1; j<=i; j++) print sinks[j] }'
+}
+
+list_inputs() {
+	pactl list sink-inputs | awk '
+		/^Sink Input #[0-9]+$/	{ print substr($3, 2) }'
+}
+
+advance_target_sink() {
+    advance=$((default_sink_index % $#))
+    shift $advance
+    next_sink=$1
+    default_sink_index=$((advance + 1))
+}
+
+IFS=$nl
+# shellcheck disable=SC2046
+set -- $(get_data)
+IFS=$oifs
+default_sink_index=$1
+shift
+sink_count=$#
+
+try=0
+while [ $try -lt "$sink_count" ]; do
+	try=$((try + 1))
+	advance_target_sink "$@"
+	next_sink_id=${next_sink%% *}
+
+	for ignore in $IGNORED_SINKS; do
+		[ ! "${next_sink##*$ignore}" = "$next_sink" ] && continue 2
+	done
+
+	if pactl set-default-sink "$next_sink_id" 2>/dev/null; then
+		for sink_input in $(list_inputs); do
+			pactl move-sink-input "$sink_input" "$next_sink_id"
+		done
+		notify-send "Audio on ${next_sink#*:::}"
+		exit 0
+	else
+		notify-send "Audio failed to be set on ${next_sink#*:::}" \
+			"trying next sink"
+	fi
+done
+
+notify-send "No available Audio sinks"
+exit 1
