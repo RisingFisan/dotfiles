@@ -8,7 +8,7 @@
 
 - **Distro**: [Manjaro Linux](https://manjaro.org/);
 - **Window Manager (WM)**: [i3-gaps](https://github.com/Airblader/i3);
-- **Shell**: zsh ([Oh My Zsh](https://ohmyz.sh/)) ;
+- **Shell**: zsh ([Oh My Zsh](https://ohmyz.sh/));
 - **Terminal Emulator**: [kitty](https://sw.kovidgoyal.net/kitty/);
 - **Status Bar**: [polybar](https://polybar.github.io/);
 - **Font**: [Fira Code](https://github.com/tonsky/FiraCode) (terminal), [Roboto](https://fonts.google.com/specimen/Roboto) (status bar);
