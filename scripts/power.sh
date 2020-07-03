@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System :' \
+MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System' \
 -hide-scrollbar true \
 -bw 0 \
 -lines 4 \

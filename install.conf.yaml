@@ -20,6 +20,9 @@
         glob: true
         path: polybar/*
     ~/.config/rofi/config.rasi: rofi/config.rasi
+    ~/.oh-my-zsh/custom/:
+            glob: true
+            path: oh-my-zsh/custom/*
 
 - create:
 
