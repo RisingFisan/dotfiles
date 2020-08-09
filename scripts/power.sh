@@ -11,7 +11,6 @@ MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System' \
 -location 1 \
 -columns 1 \
 -show-icons -icon-theme "Font Awesome Free" \
--font "Noto Sans Mono 10" \
 -color-enabled true \
 -color-window "$BACKGROUND,$BORDER,$SEPARATOR" \
 -color-normal "$BACKGROUND_ALT,$FOREGROUND,$BACKGROUND_ALT,$HIGHLIGHT_BACKGROUND,$HIGHLIGHT_FOREGROUND" \
@@ -21,7 +20,7 @@ MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System' \
 
 case "$MENU" in
   *Logout) i3-msg exit;;
-  *Sleep) systemctl suspend ;;
+  *Sleep) ~/dotfiles/scripts/lock/lock.sh && systemctl suspend ;;
   *Reboot) systemctl reboot ;;
   *Shutdown) systemctl poweroff
 esac

@@ -10,7 +10,7 @@ fi
 
 
 
-if ! updates_aur=$(yay -Qum 2> /dev/null | wc -l); then
+if ! updates_aur=$(trizen -Qum 2> /dev/null | wc -l); then
 
     updates_aur=0
 

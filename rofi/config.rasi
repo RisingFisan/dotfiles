@@ -148,7 +148,7 @@ configuration {
 /*Dracula theme based on the Purple official rofi theme*/
 
 * {
-    font: "Jetbrains Mono 12";
+    font: "Fira Code Regular 11";
     foreground: #f8f8f2;
     background-color: rgb(51, 0, 77);
     active-background: #954cba;

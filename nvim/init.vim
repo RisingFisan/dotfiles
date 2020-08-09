@@ -13,6 +13,8 @@ endif
 Plug 'eagletmt/neco-ghc'
 Plug 'zchee/deoplete-clang'
 Plug 'fszymanski/deoplete-emoji'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -20,6 +22,7 @@ colorscheme dracula
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 set number
+set clipboard=unnamedplus
 
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#sources#clang#clang_complete_database = 1
