@@ -1,4 +1,4 @@
-==========================================================
+;==========================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -57,11 +57,11 @@ font-0 = "Roboto:pixelsize=12:weight=bold;2"
 font-1 = FontAwesome5Free:style=Solid:size=11;2
 font-2 = FontAwesome5Free:style=Regular:size=10;4
 font-3 = FontAwesome5Brands:style=Regular:size=11;3
-font-4 = "Noto Serif:style=Regular:size=12;1"
+font-4 = "Noto Serif:style=Bold:size=6;1"
 
-modules-left = powermenu i3 headphones
+modules-left = powermenu i3 headphones network
 modules-center = date spotify
-modules-right = network filesystem cpu memory volume pkg
+modules-right = filesystem cpu memory volume battery pkg
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 3
@@ -397,46 +397,11 @@ margin-bottom = 0 ; 5
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix =""
-format-suffix = ""
+format-prefix ="  "
+format-suffix = "  "
 format = <label>
-exec = python /usr/share/polybar/scripts/spotify_status.py -t 42 -f '   {play_pause} {song} - {artist}  ' -p ','
+exec = spotify-now -i "%title - %artist" -p "Paused" -e "Error 404"
 click-left = playerctl play-pause
-
-[module/playpause]
-type = custom/ipc
-; Playing
-hook-0 = echo ""
-; Paused
-hook-1 = echo ""
-initial = 1
-line-size = 1
-click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-
-[module/previous]
-type = custom/script
-interval = 86400
-format = "%{T3}<label>"
-format-padding = 5
-; Previous song icon
-exec = echo ""
-; Check if spotify is running before displaying the icon
-exec-if = "pgrep spotify"
-line-size = 1
-click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-
-[module/next]
-type = custom/script
-interval = 86400
-format = "%{T3}<label>"
-format-padding = 5
-; Next song icon
-exec = echo ""
-; Check if spotify is running before displaying the icon
-exec-if = "pgrep spotify"
-line-size = 1
-click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-
 
 [module/volume]
 type = internal/pulseaudio
@@ -466,7 +431,7 @@ interval = 5
 bar-volume-width = 21
 bar-volume-indicator = 
 bar-volume-indicator-foreground = ${colors.emphasis}
-bar-volume-indicater-font = 5
+bar-volume-indicator-font = 5
 bar-volume-fill = –
 bar-volume-fill-font = 5  
 bar-volume-fill-foreground = ${colors.emphasis}
