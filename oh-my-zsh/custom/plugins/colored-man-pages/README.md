@@ -1,1 +1,0 @@
-/home/risingfisan/dotfiles/oh-my-zsh/custom/plugins/colored-man-pages/README.md

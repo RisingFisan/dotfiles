@@ -1,1 +1,0 @@
-/home/risingfisan/dotfiles/oh-my-zsh/custom/plugins/colored-man-pages/colored-man-pages.plugin.zsh
