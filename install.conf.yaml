@@ -24,6 +24,9 @@
             glob: true
             path: oh-my-zsh/custom/themes/*
     ~/.config/picom.conf: picom/picom.conf
+    ~/.config/Code\ -\ OSS/User/:
+            glob: true
+            path: Code/*
 
 - create:
 

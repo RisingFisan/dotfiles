@@ -1,0 +1,5 @@
+// Place your key bindings in this file to override the defaults
+[
+    { "key": "ctrl+[Semicolon]", "command": "workbench.action.terminal.focus"},
+    { "key": "ctrl+[Semicolon]", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"}
+]

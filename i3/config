@@ -24,7 +24,7 @@ font pango:monospace 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- dotfiles/scripts/lock/lock.sh --nofork
 
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
@@ -89,6 +89,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+Ctrl+Left move container to output left
+bindsym $mod+Ctrl+Right move container to output right
 
 # split in horizontal orientation
 # bindsym $mod+h split h
@@ -161,7 +164,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+o exec ~/dotfiles/scripts/lock/lock.sh
-exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 900 '~/dotfiles/scripts/lock/lock.sh suspend'
+# exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 900 '~/dotfiles/scripts/lock/lock.sh suspend'
 bindsym $mod+p exec ~/dotfiles/scripts/power.sh
 
 # resize window (you can also use the mouse for that)

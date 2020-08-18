@@ -20,7 +20,7 @@ MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System' \
 
 case "$MENU" in
   *Logout) i3-msg exit;;
-  *Sleep) ~/dotfiles/scripts/lock/lock.sh && systemctl suspend ;;
+  *Sleep) systemctl suspend ;;
   *Reboot) systemctl reboot ;;
   *Shutdown) systemctl poweroff
 esac

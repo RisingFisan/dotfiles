@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Dracula",
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "C_Cpp.updateChannel": "Insiders",
+    "files.associations": {
+        "config": "editorconfig"
+    },
+    "window.titleBarStyle": "custom"
+}
