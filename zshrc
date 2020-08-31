@@ -113,3 +113,5 @@ autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+[ -f "/home/risingfisan/.ghcup/env" ] && source "/home/risingfisan/.ghcup/env" # ghcup-env

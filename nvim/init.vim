@@ -15,6 +15,7 @@ Plug 'zchee/deoplete-clang'
 Plug 'fszymanski/deoplete-emoji'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 call plug#end()
 
@@ -27,6 +28,7 @@ set clipboard=unnamedplus
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#sources#clang#clang_complete_database = 1
 call deoplete#custom#option('smart_case', v:true)
+let g:deoplete#sources#jedi#show_docstring = 1
 
 call deoplete#custom#source('emoji', 'filetypes', [])
 call deoplete#custom#source('emoji', 'converters', ['converter_emoji'])
