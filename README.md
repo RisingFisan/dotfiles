@@ -6,7 +6,7 @@
 
 ## Details
 
-- **Distro**: [Manjaro Linux](https://manjaro.org/);
+- **Distro**: [Arch Linux](https://archlinux.org/);
 - **Window Manager (WM)**: [i3-gaps](https://github.com/Airblader/i3);
 - **Shell**: zsh ([Oh My Zsh](https://ohmyz.sh/));
 - **Terminal Emulator**: [kitty](https://sw.kovidgoyal.net/kitty/);
