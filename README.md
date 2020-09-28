@@ -13,7 +13,7 @@
 - **Status Bar**: [polybar](https://polybar.github.io/);
 - **Font**: [Fira Code](https://github.com/tonsky/FiraCode) (terminal), [Roboto](https://fonts.google.com/specimen/Roboto) (status bar);
 - **Editor**: [neovim](https://github.com/neovim/neovim), [Visual Studio Code](https://code.visualstudio.com/);
-- **Clipboard Manager**: [clipster](https://github.com/mrichar1/clipster/);
+- **Clipboard Manager**: [CopyQ](https://github.com/hluk/CopyQ);
 - **Notification Daemon**: [dunst](https://github.com/dunst-project/dunst);
 - **Window Switcher**: [rofi](https://github.com/davatorium/rofi);
 - **Screenshot Tool**: [flameshot](https://github.com/lupoDharkael/flameshot);
