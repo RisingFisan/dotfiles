@@ -7,9 +7,11 @@
 
 - link:
     ~/.zshrc:
+        force: true
     ~/.oh-my-zsh/custom/plugins/:
         path: oh-my-zsh/custom/plugins/*
         glob: true
+        force: true
     ~/.config/i3/config: i3/config
     ~/.config/dunst/dunstrc: dunst/dunstrc
     ~/.config/kitty/:
@@ -24,7 +26,7 @@
             glob: true
             path: oh-my-zsh/custom/themes/*
     ~/.config/picom.conf: picom/picom.conf
-    ~/.config/Code\ -\ OSS/User/:
+    ~/.config/Code - OSS/User/:
             glob: true
             path: Code/*
 
