@@ -8,5 +8,8 @@
     "files.associations": {
         "config": "editorconfig"
     },
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "haskell.hlint.ignore": [
+    "Use camelCase"
+    ]
 }

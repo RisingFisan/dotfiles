@@ -16,6 +16,7 @@ Plug 'fszymanski/deoplete-emoji'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'wincent/terminus'
 
 call plug#end()
 

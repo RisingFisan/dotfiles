@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/risingfisan/.oh-my-zsh"
 export TERMINAL="kitty"
+# export TERM="kitty"
+# export EDITOR="nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,7 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias icat="kitty +kitten icat"
 #
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Disables workspace thing - abc@DEF - the DEF thing
 # prompt_context() {
@@ -116,4 +117,16 @@ kitty + complete setup zsh | source /dev/stdin
 
 [ -f "/home/risingfisan/.ghcup/env" ] && source "/home/risingfisan/.ghcup/env" # ghcup-env
 
-export PATH=$PATH:/home/risingfisan/.local/bin/
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/.local/bin:$PATH"
+
+function yta() {
+    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
+
+function ytal() {
+    clyrics "$*"
+    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

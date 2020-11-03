@@ -18,7 +18,8 @@
 
 
 [colors]
-background = #aa33004D
+background = #2d0849
+;aa
 foreground = #dad2dd
 emphasis = #c082e0
 primary = #954cba
@@ -61,7 +62,7 @@ font-4 = "Noto Serif:style=Bold:size=6;1"
 
 modules-left = powermenu i3 bspwm headphones network
 modules-center = date spotify
-modules-right = filesystem cpu memory volume battery pkg
+modules-right = filesystem cpu memory volume battery
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 3
