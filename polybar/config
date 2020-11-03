@@ -62,7 +62,7 @@ font-4 = "Noto Serif:style=Bold:size=6;1"
 
 modules-left = powermenu i3 bspwm headphones network
 modules-center = date spotify
-modules-right = filesystem cpu memory volume battery
+modules-right = filesystem cpu memory volume battery xbacklight
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 3
@@ -288,8 +288,8 @@ type = internal/xbacklight
 card = intel_backlight
 enable-scroll = true	
 
-format = <label> <bar>
-label = BL
+format = <label>
+label =  %percentage%%
 
 bar-width = 10
 bar-indicator = |
