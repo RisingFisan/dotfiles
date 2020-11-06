@@ -53,7 +53,7 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme: "sidetab-adapta";
+/*	theme: "sidetab-adapta";*/
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -146,7 +146,7 @@ configuration {
 }
 
 /*Dracula theme based on the Purple official rofi theme*/
-/*
+
 * {
     font: "Fira Code Regular 11";
     foreground: #f8f8f2;
@@ -267,6 +267,4 @@ configuration {
     margin:     0px 0.3em 0em 0em ;
     text-color: @foreground;
 }
-* vim:ft=css
- *
- */
+/* vim:ft=css

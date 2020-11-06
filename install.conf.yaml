@@ -6,29 +6,31 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.zshrc:
-        force: true
-    ~/.oh-my-zsh/custom/plugins/:
-        path: oh-my-zsh/custom/plugins/*
-        glob: true
-        force: true
-    ~/.config/i3/config: i3/config
-    ~/.config/dunst/dunstrc: dunst/dunstrc
-    ~/.config/kitty/:
-        glob: true
-        path: kitty/*
-    ~/.config/nvim/init.vim: nvim/init.vim
-    ~/.config/polybar/:
-        glob: true
-        path: polybar/*
-    ~/.config/rofi/config.rasi: rofi/config.rasi
-    ~/.oh-my-zsh/custom/themes/:
-            glob: true
-            path: oh-my-zsh/custom/themes/*
-    ~/.config/picom.conf: picom/picom.conf
-    ~/.config/Code - OSS/User/:
-            glob: true
-            path: Code/*
+        ~/.zshrc:
+                force: true
+        ~/.oh-my-zsh/custom/plugins/:
+                path: oh-my-zsh/custom/plugins/*
+                glob: true
+                force: true
+        ~/.config/i3/config: i3/config
+        ~/.config/dunst/dunstrc: dunst/dunstrc
+        ~/.config/kitty/:
+                glob: true
+                path: kitty/*
+        ~/.config/nvim/init.vim: nvim/init.vim
+        ~/.config/polybar/:
+                glob: true
+                path: polybar/*
+        ~/.config/rofi/:
+                glob: true
+                path: rofi/* 
+        ~/.oh-my-zsh/custom/themes/:
+                glob: true
+                path: oh-my-zsh/custom/themes/*
+        ~/.config/picom.conf: picom/picom.conf
+        ~/.config/Code - OSS/User/:
+                glob: true
+                path: Code/*
 
 - create:
 

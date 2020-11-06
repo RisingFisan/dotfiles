@@ -57,10 +57,11 @@ bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym Mod1+F4 kill
 
-bindsym $mod+d exec "rofi -show drun"
-bindsym $mod+c exec "rofi -show calc -modi calc -no-show-match -no-sort -calc-command 'echo -n '{result}' | xclip -selection c'"
-bindsym $mod+Tab exec "rofi -show window"
+bindsym $mod+d exec "$HOME/dotfiles/scripts/custom-rofi.sh"
+bindsym $mod+c exec "rofi -show calc -display-calc 'Calculator' -modi calc -no-show-match -no-sort -calc-command 'echo -n '{result}' | xclip -selection c'"
+bindsym Mod1+Tab exec "rofi -show window -modi window"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -225,8 +226,8 @@ for_window [class="(?i)dolphin"] floating enable
 # opens redshift (night light) on boot (the if statement prevents multiple processes 
 # from opening if we reload i3)
 
-exec_always --no-startup-id "if [[ -z $(pgrep redshift-gtk) ]]; then
-redshift-gtk
+exec_always --no-startup-id "if [[ -z $(pgrep redshift) ]]; then
+redshift
 fi"
 
 workspace 9 output HDMI-A-0
@@ -241,6 +242,10 @@ exec_always --no-startup-id "if [[ -z $(pgrep spotify) ]]; then
 spotify
 fi"
 for_window [class="(?i)spotify"] move to workspace 10
+
+bindsym Ctrl+Shift+P exec firefox --private-window
+
+bindsym $mod+x exec thunar
 
 # Screenshotting stuff
 

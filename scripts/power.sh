@@ -5,10 +5,7 @@ MENU="$(rofi -no-lazy-grab -sep "|" -dmenu -i -p 'System' \
 -bw 0 \
 -lines 4 \
 -line-padding 10 \
--padding 20 \
--width 15 \
--xoffset 7 -yoffset 45 \
--location 1 \
+-padding 10 \
 -columns 1 \
 -show-icons -icon-theme "Font Awesome Free" \
 -color-enabled true \
@@ -24,3 +21,8 @@ case "$MENU" in
   *Reboot) systemctl reboot ;;
   *Shutdown) systemctl poweroff
 esac
+
+
+# -xoffset 7 -yoffset 45 \
+# -width 15 \
+# -location 1 \
