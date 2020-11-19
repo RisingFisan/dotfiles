@@ -19,7 +19,7 @@ configuration {
         text-color:                 #ffffff;
 	text2-color:                #aaaaaa;
 
-        accent-color:               #5e35b1;
+        accent-color:               #881798;
         accent2-color:              #8b6cc9;
         hover-color:                #39454b;
         urgent-color:               #ff5252;
@@ -42,7 +42,7 @@ configuration {
 }
 
 #window {
-	y-offset: -45;
+	y-offset: -40;
         anchor:   southwest;
         location: southwest;
         width: 445px;
