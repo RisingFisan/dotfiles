@@ -3,15 +3,22 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/risingfisan/.oh-my-zsh"
-# export TERMINAL="kitty"
-export TERM="xterm-256color"
-# export EDITOR="nvim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster-custom"
+#
+if [[ -n $SSH_CONNECTION ]]; then
+  ZSH_THEME="arrow"
+else
+  ZSH_THEME="agnoster-custom"
+  alias icat="kitty +kitten icat"
+  autoload -Uz compinit
+  compinit
+  # Completion for kitty
+  kitty + complete setup zsh | source /dev/stdin
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,7 +107,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias icat="kitty +kitten icat"
 #
 
 # Disables workspace thing - abc@DEF - the DEF thing
@@ -110,10 +116,6 @@ alias icat="kitty +kitten icat"
 #   fi
 # }
 
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
 
 [ -f "/home/risingfisan/.ghcup/env" ] && source "/home/risingfisan/.ghcup/env" # ghcup-env
 
