@@ -9,16 +9,15 @@ export ZSH="/home/risingfisan/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #
-if [[ -n $SSH_CONNECTION ]]; then
-  ZSH_THEME="arrow"
-else
-  ZSH_THEME="agnoster-custom"
+if [[ -z $SSH_CONNECTION ]]; then
   alias icat="kitty +kitten icat"
   autoload -Uz compinit
   compinit
   # Completion for kitty
   kitty + complete setup zsh | source /dev/stdin
 fi
+
+ZSH_THEME="agnoster-custom"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
