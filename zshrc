@@ -3,8 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/risingfisan/.oh-my-zsh"
-export TERMINAL="kitty"
-# export TERM="kitty"
+# export TERMINAL="kitty"
+export TERM="xterm-256color"
 # export EDITOR="nvim"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -128,5 +128,5 @@ function ytal() {
     mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

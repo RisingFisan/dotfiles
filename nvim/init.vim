@@ -25,7 +25,7 @@ colorscheme dracula
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 set number
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#sources#clang#clang_complete_database = 1

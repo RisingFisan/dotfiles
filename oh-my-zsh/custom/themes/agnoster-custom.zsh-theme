@@ -94,7 +94,15 @@ prompt_end() {
 # }
 
 prompt_context() {
-	prompt_segment black default " 🌈 "
+	if [[ "$(cat /proc/sys/kernel/hostname)" = "rainbow" ]]; then
+		prompt_segment black default " 🌈 "
+	elif [[ "$(cat /proc/sys/kernel/hostname)" = "floshed" ]]; then
+		prompt_segment black default " 😳 "
+	elif [[ "$(cat /proc/sys/kernel/hostname)" = "axiom" ]]; then
+		prompt_segment black default " 🤖 "
+	else
+		prompt_segment black default " ⭐ "
+	fi
 }
 
 # Git: branch/detached head, dirty status
