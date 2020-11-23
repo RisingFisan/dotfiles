@@ -18,6 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'wincent/terminus'
 Plug 'racer-rust/vim-racer'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
