@@ -100,6 +100,8 @@ prompt_context() {
 		prompt_segment black default " 😳 "
 	elif [[ "$(cat /proc/sys/kernel/hostname)" = "axiom" ]]; then
 		prompt_segment black default " 🤖 "
+	elif [[ "$(cat /proc/sys/kernel/hostname)" = "pizza" ]]; then
+		prompt_segment black default " 🍕 "
 	else
 		prompt_segment black default " ⭐ "
 	fi
