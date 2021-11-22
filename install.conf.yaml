@@ -31,6 +31,10 @@
         ~/.config/Code - OSS/User/:
                 glob: true
                 path: Code/*
+        ~/.config/sway/config: sway/config
+        ~/.config/waybar/:
+                glob: true
+                path: waybar/*
 
 - create:
 
