@@ -21,8 +21,8 @@ Plug 'wincent/terminus'
 call plug#end()
 
 colorscheme dracula
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+"highlight Normal ctermbg=none
+"highlight NonText ctermbg=none
 set number
 set clipboard+=unnamedplus
 
